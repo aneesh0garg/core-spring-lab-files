@@ -1,7 +1,9 @@
 package rewards.internal.restaurant;
 
 import common.money.Percentage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -44,6 +46,7 @@ import java.util.Map;
  *   We will fix this error in the next step.
  */
 
+@Repository
 public class JdbcRestaurantRepository implements RestaurantRepository {
 
 	private DataSource dataSource;
@@ -60,7 +63,8 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 	 * Restaurant cache is populated for read only access
 	 */
 
-	public JdbcRestaurantRepository(DataSource dataSource) {
+	@Autowired
+    public JdbcRestaurantRepository(DataSource dataSource) {
 		this.dataSource = dataSource;
 		this.populateRestaurantCache();
 	}
@@ -68,7 +72,7 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 	public JdbcRestaurantRepository() {
 	}
 
-	public void setDataSource(DataSource dataSource) {
+    public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 
