@@ -18,7 +18,6 @@ public class JdbcAccountRepository implements AccountRepository {
 	private JdbcTemplate jdbcTemplate;
 
 	public JdbcAccountRepository(JdbcTemplate jdbcTemplate) {
-
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
